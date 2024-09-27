@@ -1,3 +1,2 @@
 #!/bin/bash
-install -m $(stat -c '%a' olleh) olleh hello
-echo "Mode of 'hello' set to match 'olleh'."
+chmod --reference-olleh hello
