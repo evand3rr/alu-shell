@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 #This script stops the 4-to_infinity_and_beyond process
-prog_pid=()
-readarray -t prog_pid < < (preg -la -x ".bash*" | grep '4-to_infinity_and_beyond' | cut -d ' ' -f 1)
-for ((i = 0; i <"${#prog_pid[@]}"; i++)) do
-	kill -s SIGTERM "${prog_pid[i]}"
-done
+
+pid=$(pgrep -f "To infinity and beyond")
+
+if [[ -n $pid ]]; then
+    kill "$pid"
+    echo "Process $pid has been stopped."
+else
+    echo "No process found displaying 'To infinity and beyond'."
+fi
